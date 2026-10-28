@@ -1,18 +1,18 @@
 # Maior Subsequência Comum (LCS) - Programação Dinâmica
 
-def lcs(x, y):
-    m = len(x)
-    n = len(y)
+def lcs(x, y): #Função que recebe duas palavras x = "ABCB" e y = "BCAB"
+    m = len(x) #len devolve o tamanho da palavra x
+    n = len(y) #len devolve o tamanho da palavra y
 
     # 1. Tabela (m+1) x (n+1) cheia de zeros
     #    (linha 0 e coluna 0 = comparar com string vazia -> 0)
     dp = [[0] * (n + 1) for _ in range(m + 1)]
 
     # 2. Preenche a tabela linha por linha
-    for i in range(1, m + 1):
-        for j in range(1, n + 1):
-            if x[i - 1] == y[j - 1]:
-                # letras iguais: pega a diagonal e soma 1
+    for i in range(1, m + 1): #i é a linha, ligada às letras de X
+        for j in range(1, n + 1): #j é a coluna, ligada às letras de Y
+            if x[i - 1] == y[j - 1]: #compara a letra da linha com a letra da coluna
+                # letras iguais: pega a diagonal e soma 1, porque a linha 0 e a coluna 0 já estão prontas, todas com zero
                 dp[i][j] = dp[i - 1][j - 1] + 1
             else:
                 # letras diferentes: o maior entre cima e esquerda

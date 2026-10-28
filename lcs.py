@@ -22,16 +22,16 @@ def lcs(x, y): #Função que recebe duas palavras x = "ABCB" e y = "BCAB"
     resultado = ""
     i, j = m, n
     while i > 0 and j > 0:
-        if x[i - 1] == y[j - 1]:
+        if x[i - 1] == y[j - 1]: #Se as letras forem iguais, adiciona a letra à resposta e move na diagonal
             resultado = x[i - 1] + resultado
             i -= 1
             j -= 1
         elif dp[i - 1][j] >= dp[i][j - 1]:
             i -= 1
         else:
-            j -= 1
+            j -= 1 
 
-    return dp[m][n], resultado, dp
+    return dp[m][n], resultado, dp #Retorna o tamanho da LCS, a subsequência e a tabela dp
 
 
 def mostrar_tabela(x, y, dp):
